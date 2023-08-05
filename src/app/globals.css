@@ -2,26 +2,73 @@
 @tailwind components;
 @tailwind utilities;
 
-:root {
-  --foreground-rgb: 0, 0, 0;
-  --background-start-rgb: 214, 219, 220;
-  --background-end-rgb: 255, 255, 255;
+
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+@font-face {
+  font-family: Blackout;
+  src: url("./font/Chillax-Bold.otf") format("opentype");
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --foreground-rgb: 255, 255, 255;
-    --background-start-rgb: 0, 0, 0;
-    --background-end-rgb: 0, 0, 0;
+@font-face {
+  font-family: Plackout;
+  src: url("./font/Chillax-Semibold.otf") format("opentype");
+}
+
+@font-face {
+  font-family: Boldout;
+  src: url("./font/Excon_Complete/Fonts/OTF/Excon-Black.otf") format("opentype");
+}
+
+#textv{
+  writing-mode: vertical-rl;
+  text-orientation: mixed;
+}
+
+body{
+  background-color: black
+}
+
+
+
+.middle {
+  position: absolute;
+  top: 87%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.mouse {
+  width: 30px;
+  height: 50px;
+  border: 2px solid #333333;
+  border-radius: 60px;
+}
+
+.mouse::before {
+  content: '';
+  width: 8px;
+  height: 12px;
+  position: absolute;
+  top: 28px;
+  background-color: #333;   
+  left: 50%;
+  transform: translateX(-50%);
+  border-radius: 50%;
+  opacity: 1;
+  animation: mouse 2s infinite;
+}
+
+@keyframes mouse {
+  from {
+      opacity: 1;
+      bottom:  20px;
   }
-}
-
-body {
-  color: rgb(var(--foreground-rgb));
-  background: linear-gradient(
-      to bottom,
-      transparent,
-      rgb(var(--background-end-rgb))
-    )
-    rgb(var(--background-start-rgb));
+  to {
+      opacity: 0;
+      top: 10px;
+  }
 }
